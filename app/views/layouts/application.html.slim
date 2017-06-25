@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+  title Users Application
+  = csrf_meta_tags
+
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body.container
+
+  - if flash[:success].present?
+    p.alert.alert-success = flash[:success]
+  - if flash[:notice].present?
+    p.alert.alert-info = flash[:notice]
+  - if flash[:alert].present?
+    p.alert.alert-danger = flash[:alert]
+
+  = yield
