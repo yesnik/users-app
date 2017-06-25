@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  scope :not_admin, -> { where(admin: false) }
+
   def full_name
     "#{firstname} #{lastname}" 
   end
