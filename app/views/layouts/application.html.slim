@@ -8,6 +8,12 @@ html
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body.container
+    .navbar.navbar-default
+      .navbar-header
+        = link_to 'Users App', root_path, class: 'navbar-brand'
+      ul.nav.nav-pills.navbar-nav
+        li.active
+          = link_to 'Users', users_path
 
   - if flash[:success].present?
     p.alert.alert-success = flash[:success]
