@@ -1,2 +1,11 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+h1 Detail information
+
+h3 = @user.full_name
+
+ul
+  li
+    p Birthdate: #{@user.birthdate}
+  li
+    p Email: #{@user.email}
+  li
+    p Biography: #{@user.biography}

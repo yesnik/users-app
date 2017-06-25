@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin
+  before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -30,5 +31,9 @@ class UsersController < ApplicationController
     return if current_user.admin?
     flash[:notice] = 'Sorry... Only admin has access to that page.'
     redirect_to :root
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
