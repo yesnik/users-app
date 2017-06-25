@@ -1,8 +1,4 @@
 h1 Edit user's information
 
 = simple_form_for(@user, html: {multipart: true, class: 'form-horizontal'}) do |f|
-  = f.input :firstname
-  = f.input :lastname
-  = f.input :birthdate
-  = f.input :biography
-  = f.submit
+  = render partial: 'form', locals: {f: f}

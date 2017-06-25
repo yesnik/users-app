@@ -8,9 +8,17 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = 'User was created'
+      redirect_to users_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -35,7 +43,7 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :birthdate, :biography)
+    params.require(:user).permit(:firstname, :lastname, :birthdate, :biography, :email, :password)
   end
 
   def ensure_admin

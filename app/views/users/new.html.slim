@@ -1,0 +1,7 @@
+h1 Create user
+
+= simple_form_for(@user, html: {multipart: true, class: 'form-horizontal'}) do |f|
+  = f.input :email
+  = f.input :password, autocomplete: "off"
+  = f.input :password_confirmation, autocomplete: "off"
+  = render partial: 'form', locals: {f: f}
