@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin
-  before_action :find_user, only: [:show, :edit, :update, :send_email]
+  before_action :find_user, only: [:show, :edit, :update, :send_email, :destroy]
 
   def index
     @users = User.not_admin
@@ -54,6 +54,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if @user.destroy
+      flash[:success] = 'User was deleted'
+    else
+      flash[:alert] = 'Sorry, user was not deleted because of an error'
+    end
+    redirect_to users_url
   end
 
   def send_email
