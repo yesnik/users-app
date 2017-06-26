@@ -28,8 +28,6 @@ class UsersController < ApplicationController
       end
 
       format.pdf do
-        # pdf = WickedPdf.new.pdf_from_string('Hello There!')
-
         html = render_to_string(layout: "pdf_layout", action: 'pdf/show.html')
         pdf = WickedPdf.new.pdf_from_string(html)
         

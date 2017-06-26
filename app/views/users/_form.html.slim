@@ -1,3 +1,5 @@
+- if f.object.avatar.present?
+  = image_tag f.object.avatar.url(:medium)
 = f.input :avatar, as: :file
 = f.input :firstname
 = f.input :lastname
