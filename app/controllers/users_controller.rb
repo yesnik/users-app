@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :ensure_admin, except: [:new, :create]
   before_action :find_user, only: [:show, :edit, :update, :send_email, :destroy]
 
   def index
@@ -40,8 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user.update(user_params)
@@ -71,7 +70,8 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :birthdate, :biography, :email, :password)
+    params.require(:user).permit(:firstname, :lastname, :birthdate, :biography, :email,
+                                 :password, :password_confirmation)
   end
 
   def ensure_admin

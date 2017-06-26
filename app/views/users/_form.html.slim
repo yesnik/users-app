@@ -1,5 +1,6 @@
 = f.input :firstname
 = f.input :lastname
-= f.input :birthdate
+= f.input :birthdate, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 15,
+                      order: [:day, :month, :year]
 = f.input :biography
 = f.submit 'Save', class: 'btn btn-primary'

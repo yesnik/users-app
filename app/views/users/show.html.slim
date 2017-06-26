@@ -3,5 +3,5 @@ h1 Detail information
   .col-lg-12
     ul.nav.nav-pills.profile-nav
       li = link_to 'Download .pdf', user_path(@user, format: :pdf), class: 'btn btn-success'
-      li.btn = link_to "Email to #{UserMailer::MAIL_TO}", user_send_email_path, class: 'btn btn-success'
+      li.btn- = link_to "Email to #{UserMailer::MAIL_TO}", user_send_email_path, class: 'btn btn-success'
 = render partial: 'users/user_info', locals: {user: @user}

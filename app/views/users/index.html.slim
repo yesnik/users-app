@@ -19,7 +19,7 @@ h1 Users
           td
             = link_to 'Show', user_path(user)
             |  #{link_to 'Edit', edit_user_path(user)}
-            |  #{link_to 'Delete', user_path(user), method: :delete}
+            |  #{link_to 'Delete', user_path(user), method: :delete, 'data-confirm': 'Do you want to delete user?'}
 
 - else
   p No users yet.
