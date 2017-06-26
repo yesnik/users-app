@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :send_email]
 
   def index
     @users = User.not_admin
@@ -54,6 +54,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def send_email
+    UserMailer.user_profile(@user).deliver
+    flash[:success] = "Email was sent to #{UserMailer::MAIL_TO}"
+    redirect_to user_url(@user)
   end
 
   protected
