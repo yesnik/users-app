@@ -22,6 +22,22 @@ class UsersController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html do
+        render :show
+      end
+
+      format.pdf do
+        # pdf = WickedPdf.new.pdf_from_string('Hello There!')
+
+        html = render_to_string(layout: "pdf_layout", action: 'pdf/show.html')
+        pdf = WickedPdf.new.pdf_from_string(html)
+        
+        send_data(pdf,
+                  filename: "user_info_#{@user.id}.pdf",
+                  disposition: 'attachment')
+      end
+    end
   end
 
   def edit

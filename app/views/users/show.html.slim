@@ -1,11 +1,6 @@
 h1 Detail information
+.row
+  .col-lg-12
+    = link_to 'Download .pdf', user_path(@user, format: :pdf), class: 'btn btn-success'
 
-h3 = @user.full_name
-
-ul
-  li
-    p Birthdate: #{@user.birthdate}
-  li
-    p Email: #{@user.email}
-  li
-    p Biography: #{@user.biography}
+= render partial: 'users/user_info', locals: {user: @user}
