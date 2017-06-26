@@ -1,5 +1,12 @@
 h3 = user.full_name
 ul
+  - if user.avatar.present?
+    li
+      p
+        - if formats.include?(:pdf)
+          = image_tag user.avatar.path(:medium)
+        - else
+          = image_tag user.avatar.url(:medium)
   li
     p Birthdate: #{user.birthdate}
   li
